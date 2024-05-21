@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		New Movie
+	</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+	<header>
+		<div th:if="${userDetails}">
+			<span th:text="${userDetails.username}"></span>
+			<a href="/logout">Logout</a>
+		</div>
+		<div th:unless="${user}">
+			<a href="/login">Login</a>
+		</div>
+	</header>
+
+	<h1>Add a recipe</h1>
+	<form th:action="@{/recipes}" method="POST" th:object="${recipe}">
+  		<div th:if="${#fields.hasGlobalErrors()}">
+  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
+  		</div>
+		
+		<div>
+			<label>Name:</label> 
+			<span><input type="text" th:field="${recipe.name}" /></span>
+		    </span>
+		</div>
+		<div>
+			<label>Description:</label> 
+			<span><input type="text" th:field="${recipe.description}"/></span>
+		</div>
+		<div>
+			<span><button type="submit">Submit</button></span>
+		</div>
+	</form>
+</body>
+
+</html>

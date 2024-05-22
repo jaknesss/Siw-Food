@@ -22,9 +22,6 @@ public class User {
 	@NotBlank
 	private String email;
 	
-	@OneToOne
-	private Chef chef;
-	
     public Long getId() {
 		return id;
 	}
@@ -44,14 +41,6 @@ public class User {
 		return surname;
 	}
 	
-	public Chef getChef() {
-		return chef;
-	}
-
-	public void setChef(Chef chef) {
-		this.chef = chef;
-	}
-
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}

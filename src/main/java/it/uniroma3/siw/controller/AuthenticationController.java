@@ -81,7 +81,6 @@ public class AuthenticationController {
 
         if(!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors()) {
         	Chef chef = generateAndSetUpChef(user, credentials);
-        	user.setChef(chef);
             credentials.setUser(user);
             userService.saveUser(user);
             chefService.saveChef(chef);

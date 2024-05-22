@@ -5,7 +5,6 @@
 	<title>
 		New Movie
 	</title>
-	<link rel="stylesheet" href="/css/stile.css" />
 </head>
 
 <body>
@@ -20,7 +19,7 @@
 	</header>
 
 	<h1>Add a recipe</h1>
-	<form th:action="@{/recipes}" method="POST" th:object="${recipe}">
+	<form th:action="@{/myRecipes}" method="POST" th:object="${recipe}">
   		<div th:if="${#fields.hasGlobalErrors()}">
   			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
   		</div>

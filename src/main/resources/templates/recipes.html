@@ -3,34 +3,15 @@
 
 <head>
     <title>Recipes</title>
-    <link rel="stylesheet" href="/css/stile.css" />
 </head>
-
 <body>
-    <header>
-        <div th:if="${userDetails}">
-            <span th:text="${userDetails.username}"></span>
-            <a href="/logout">Logout</a>
+    <a href="/formNewRecipe">Add a Recipe</a>
+    <h1>My Recipes<h1>
+    <div class="recipe-list">
+        <div th:each="recipe : ${recipes}" class="recipe-card">
+            <h3 th:text="${recipe.name}">Recipe Name</h3>
         </div>
-        <div th:unless="${userDetails}">
-            <a href="/login">Login</a>
-        </div>
-    </header>
-    
-    <h1>Recipes</h1>
-    <div th:if="${recipes == null || recipes.isEmpty()}">No recipes saved</div>
-    <ul>
-        <li th:each="recipe : ${recipes}">
-            <div>
-                <a th:text="${recipe.name} + ':' + ${recipe.description}"></a>
-            </div>
-            <ul>
-                <li th:each="ingredient : ${recipe.ingredients}">
-                    <span th:text="${ingredient.name} + ' x' + ${ingredient.qnt}"></span>
-                </li>
-            </ul>
-        </li>
-    </ul>
+    </div>
 </body>
 
 </html>

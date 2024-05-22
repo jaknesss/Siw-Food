@@ -20,6 +20,8 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 	private String name;
+	private String imagePath;
+	
 	
 	@Column(length = 2000)
 	private String description;
@@ -34,24 +36,22 @@ public class Recipe {
 	public Chef getChef() { return chef; }
 	public String getDescription() { return description; }
 	public List<Ingredient> getIngredients() { return ingredients; }
+	public String getImagePath() { return imagePath; }
+	public void setImagePath(String imagePath) { this.imagePath = imagePath; }
 	public void setName(String name) { this.name = name; }	
 	public void setDescription(String description) { this.description = description; }
 	public void setChef(Chef chef) { this.chef = chef;}
 	public void setIngredients(List<Ingredient> ingredients) { this.ingredients = ingredients; }
 	
 	@Override
-	public int hashCode() {
-		return Objects.hash(chef, description, ingredients, name);
-	}
+	public int hashCode() { return Objects.hash(chef, description, ingredients, name); }
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) return true;
 		if (obj == null) return false;
 		if (getClass() != obj.getClass()) return false;
 		Recipe other = (Recipe) obj;
-		return Objects.equals(chef, other.chef) && 
-			   Objects.equals(description, other.description) && 
-			   Objects.equals(ingredients, other.ingredients) && 
+		return Objects.equals(ingredients, other.ingredients) && 
 			   Objects.equals(name, other.name);
 	}
 	

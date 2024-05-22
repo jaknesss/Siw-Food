@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
@@ -20,7 +21,10 @@ public class User {
 	private String surname;
 	@NotBlank
 	private String email;
-
+	
+	@OneToOne
+	private Chef chef;
+	
     public Long getId() {
 		return id;
 	}
@@ -40,6 +44,14 @@ public class User {
 		return surname;
 	}
 	
+	public Chef getChef() {
+		return chef;
+	}
+
+	public void setChef(Chef chef) {
+		this.chef = chef;
+	}
+
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}

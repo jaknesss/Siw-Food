@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.siw.model.Chef;
@@ -44,7 +45,13 @@ public class RecipeController {
 	 public String showEveryRecipe(Model model) {
 		model.addAttribute("recipes", recipeService.findAll());
 		return "recipes.html";
-   }
+	}
+		
+	@GetMapping("/recipes/{id}")
+	public String getMovie(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("recipe", this.recipeService.findById(id).get());
+		return "recipe.html";
+	}
 	
 	
 	@PostMapping("/myRecipes")
@@ -56,7 +63,6 @@ public class RecipeController {
             Chef chef = chefService.findByUsername(getUsernameFromSecurityContext());
             if (chef != null) recipe.setChef(chef);
             this.recipeService.save(recipe);
-            //this.chefService.saveChef(chef);
             chef.getRecipes().add(recipe);
             return "redirect:myRecipes";        
             }

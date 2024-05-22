@@ -31,7 +31,8 @@ public class Recipe {
 	
 	@OneToMany
 	private List<Ingredient> ingredients;
-
+	
+	public Long getId() { return id; }
 	public String getName() { return name; }
 	public Chef getChef() { return chef; }
 	public String getDescription() { return description; }

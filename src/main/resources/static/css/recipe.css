@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-header, .page-footer {
+  background-color: #f25fff;
+  color: #242424;
+  text-align: center;
+  padding: 10px;
+  font-weight: 600;
+}
+
+.page-header {
+  flex-shrink: 0;
+}
+
+.page-footer {
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  padding: 20px;
+  column-gap: 20px;
+}
+
+.recipe-details, .ingredients-list {
+  background-color: #f9f9f9;
+  padding: 20px;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.recipe-details {
+  order: 1;
+}
+
+.ingredients-list {
+  order: 2;
+}
+
+.ingredients-list ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}

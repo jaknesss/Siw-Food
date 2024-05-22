@@ -6,12 +6,13 @@
 </head>
 <body>
     <a href="/formNewRecipe">Add a Recipe</a>
-    <h1>My Recipes<h1>
-    <div class="recipe-list">
-        <div th:each="recipe : ${recipes}" class="recipe-card">
-            <h3 th:text="${recipe.name}">Recipe Name</h3>
-        </div>
-    </div>
+    <h1>Recipes</h1>
+	<div th:if="${recipe==null || recipe.isEmpty()}">No saved recipes</div>
+	<ul>
+		<li th:each="recipe : ${recipes}">
+			<a th:href="@{'/recipes' + '/' + ${recipe.id}}" th:text="${recipe.name}"></a>
+		</li>
+	</ul>
 </body>
 
 </html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chef</title>
+
+</head>
+
+<body>
+	<header>
+		<div th:if="${userDetails}">
+			<span th:text="${userDetails.username}"></span>
+			<a href="/logout">Logout</a>
+		</div>
+		<div th:unless="${user}">
+			<a href="/login">Login</a>
+		</div>
+	</header>
+
+    <h1>Chef's Details</h1>
+    <div th:if="${chef}">
+        <span th:text="${chef.name} + ' ' + ${chef.surname}"></span>
+        <h2>Recipes</h2>
+    	<ul>
+		<li th:each="recipe : ${chef.recipes}">
+			<a th:href="@{'/recipes' + '/' + ${recipe.id}}" th:text="${recipe.name}"></a>
+		</li>
+	</ul>
+    </div>
+    <div th:unless="${chef}">Non esiste</div>
+  </body>
+</html>

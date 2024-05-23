@@ -7,7 +7,7 @@
 <body>
     <a href="/formNewRecipe">Add a Recipe</a>
     <h1>Recipes</h1>
-	<div th:if="${recipe==null || recipe.isEmpty()}">No saved recipes</div>
+	<div th:if="${recipes==null || recipes.isEmpty()}">No saved recipes</div>
 	<ul>
 		<li th:each="recipe : ${recipes}">
 			<a th:href="@{'/recipes' + '/' + ${recipe.id}}" th:text="${recipe.name}"></a>

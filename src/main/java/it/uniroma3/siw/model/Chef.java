@@ -18,7 +18,7 @@ public class Chef {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Long id;	
 	private String name;
 	private String surname;
 	private String username;
@@ -30,6 +30,7 @@ public class Chef {
 	private List<Recipe> recipes;
 	private String imagePath;
 	
+	public Long getId() { return id; }
 	public String getName() { return name; }
 	public String getSurname() { return surname; }
 	public LocalDate getBirthDate() { return dateOfBirth; }

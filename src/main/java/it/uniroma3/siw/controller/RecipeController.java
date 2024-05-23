@@ -48,7 +48,7 @@ public class RecipeController {
 	}
 		
 	@GetMapping("/recipes/{id}")
-	public String getMovie(@PathVariable("id") Long id, Model model) {
+	public String getRecipe(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("recipe", this.recipeService.findById(id).get());
 		return "recipe.html";
 	}
@@ -70,7 +70,7 @@ public class RecipeController {
 
     private String getUsernameFromSecurityContext() {
     	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+    	//Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
         return credentialsService.getCredentials(userDetails.getUsername()).getUsername();
     }    
 }

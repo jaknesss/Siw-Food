@@ -14,13 +14,13 @@
       <!-- Portfolio Item Heading -->
       <h1 class="my-4">
         <span th:text="${recipe.name}">Recipe's Name</span>
-	<small th:text="'Chef: ' + ${recipe.chef.name}">Chef's name</small>
+	<small th:text="'Chef: ' + ${recipe.chef.name}" href="'/chefs' + '/' + ${recipe.chef.id}">Chef's name</small>
       </h1>
     
       <!-- Portfolio Item Row -->
       <div class="row">
         <div class="col-md-8">
-          <img class="img-fluid" src="/images/broccoli.jpg" alt="Image of Broccoli">
+          <img class="img-fluid" src="static/images/broccoli.jpg" alt="Image of Broccoli">
         </div>
     
         <div class="col-md-4">

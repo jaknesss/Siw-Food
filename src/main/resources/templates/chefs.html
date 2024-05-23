@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chefs</title>
+</head>
+<body>
+    <h1>Chefs</h1>
+	<div th:if="${chefs==null || chefs.isEmpty()}">No saved Chefs</div>
+	<ul>
+		<li th:each="chef : ${chefs}">
+			<a th:href="@{'/chefs' + '/' + ${chef.id}}" th:text="${chef.name} + ' ' +  ${chef.surname}"></a>
+		</li>
+	</ul>
+</body>
+
+</html>

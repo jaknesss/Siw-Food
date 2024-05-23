@@ -50,15 +50,11 @@ public class AuthenticationController {
 	@GetMapping(value = "/") 
 	public String index(Model model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if (authentication instanceof AnonymousAuthenticationToken) {
-	        return "index.html";
-		}
+		if (authentication instanceof AnonymousAuthenticationToken) return "index.html";
 		else {		
 			UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-			if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
-				return "admin/indexAdmin.html";
-			}
+			if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) return "admin/indexAdmin.html";
 		}
         return "index.html";
 	}
@@ -68,7 +64,7 @@ public class AuthenticationController {
         
     	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-    	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) { return "admin/indexAdmin.html"; }
+    	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) return "admin/indexAdmin.html";
         return "index.html";
     }
 
@@ -80,7 +76,7 @@ public class AuthenticationController {
                  Model model) {
 
         if(!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors()) {
-        	Chef chef = generateAndSetUpChef(user, credentials);
+        	Chef chef = createAndSetUpChef(user, credentials);
             credentials.setUser(user);
             userService.saveUser(user);
             chefService.saveChef(chef);
@@ -91,13 +87,13 @@ public class AuthenticationController {
         return "registerUser";
     }
 	
-	private Chef generateAndSetUpChef(User user, Credentials credentials) {
+	private Chef createAndSetUpChef(User user, Credentials credentials) {
 		Chef chef = new Chef();
     	chef.setName(user.getName());
     	chef.setSurname(user.getSurname());
     	chef.setUsername(credentials.getUsername());
-    	//chef.setRecipes(Collections.emptyList());
     	chef.setRecipes(new LinkedList<Recipe>());
+    	chef.setBirthDate(user.getDateOfBirth());
     	return chef;
 	}
 	

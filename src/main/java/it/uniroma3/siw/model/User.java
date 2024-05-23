@@ -1,5 +1,9 @@
 package it.uniroma3.siw.model;
 
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,6 +26,9 @@ public class User {
 	@NotBlank
 	private String email;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate dateOfBirth;
+	
     public Long getId() {
 		return id;
 	}
@@ -29,6 +36,14 @@ public class User {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	public LocalDate getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(LocalDate dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
 	public String getName() {
 		return name;
 	}

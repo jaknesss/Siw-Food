@@ -54,6 +54,12 @@
                                         <label class="form-label" for="form3Example3cg">Email</label>
                                         <span th:if="${#fields.hasErrors('user.email')}" th:errors="${user.email}" th:style="'color:red'"></span>
                                     </div>
+                                    
+                                     <div data-mdb-input-init class="form-outline mb-4">
+                                        <input type="date" id="form3Example3cg" class="form-control form-control-lg" required th:field="${user.dateOfBirth}" />
+                                        <label class="form-label" for="form3Example3cg">Birth Date</label>
+                                        <span th:if="${#fields.hasErrors('user.dateOfBirth')}" th:errors="${user.dateOfBirth}" th:style="'color:red'"></span>
+                                    </div>
 
                                     <div data-mdb-input-init class="form-outline mb-4">
                                         <input type="text" id="form3Example4cg" class="form-control form-control-lg" required th:field="${credentials.username}" />

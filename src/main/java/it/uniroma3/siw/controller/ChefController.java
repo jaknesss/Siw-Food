@@ -26,7 +26,4 @@ public class ChefController {
 		model.addAttribute("chef", chefService.findById(id).get());
 		return "chef.html";
 	}
-	
-	
-	
 }

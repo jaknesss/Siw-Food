@@ -1,31 +1,28 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Chef</title>
-
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chef Profile</title>
+    <link rel="stylesheet" href="chef.css">
 </head>
-
 <body>
-	<header>
-		<div th:if="${userDetails}">
-			<span th:text="${userDetails.username}"></span>
-			<a href="/logout">Logout</a>
-		</div>
-		<div th:unless="${user}">
-			<a href="/login">Login</a>
-		</div>
-	</header>
-
-    <h1>Chef's Details</h1>
-    <div th:if="${chef}">
-        <span th:text="${chef.name} + ' ' + ${chef.surname}"></span>
-        <h2>Recipes</h2>
-    	<ul>
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="https://greatcanadian.com/wp-content/uploads/2023/08/Gordon-Ramsay-PR-1.jpg" alt="Profile Picture" class="profile-image">
+            <div class="profile-info">
+                <h1 id="chef-name" th:text="${chef.name} + ' ' + ${chef.surname}">Nome Cognome</h1>
+                <p id="chef-username" th:text="${chef.username}">@username</p>
+            </div>
+        </div>
+        <div class="recipes-list">
+            <h2>My Recipes </h2>
+            <ul>
 		<li th:each="recipe : ${chef.recipes}">
 			<a th:href="@{'/recipes' + '/' + ${recipe.id}}" th:text="${recipe.name}"></a>
 		</li>
 	</ul>
+        </div>
     </div>
-    <div th:unless="${chef}">Non esiste</div>
-  </body>
+</body>
 </html>

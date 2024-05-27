@@ -14,9 +14,9 @@
       <!-- Portfolio Item Heading -->
       <h1 class="my-4">
         <span th:text="${recipe.name}">Recipe's Name</span>
-	<small>
-		<a th:href="@{'/chefs' + '/' + ${recipe.chef.id}}" th:text="'Chef: ' + ${recipe.chef.name}"></a>
-	</small>
+        <small>
+          <a th:href="@{'/chefs' + '/' + ${recipe.chef.id}}" th:text="'Chef: ' + ${recipe.chef.name}"></a>
+        </small>
       </h1>
     
       <!-- Portfolio Item Row -->
@@ -39,24 +39,29 @@
       </div>
       <!-- /.row -->
     
-      <!-- Related Projects Row -->
+       <!-- Related Projects Row -->
       <h3 class="my-4">Chef's other recipes</h3>
     
-      <div class="row">
-      	<div th:each="rec : ${recipe.chef.recipes}">
-       	 	<div th:if="${rec != recipe}">
-			<div class="col-md-3 col-sm-6 mb-4">
-          		<a th:href="@{'/recipes' + '/' + ${rec.id}}">
-            			<img class="img-fluid" src="/images/broccoli.jpg" alt="${rec.name}">
-          		</a>
-       	 	</div>
+	<div class="inline-recipes">
+	  <div th:each="rec : ${recipe.chef.recipes}">
+	    <div th:if="${rec != recipe}" class="recipe-item">
+	      <a th:href="@{'/recipes' + '/' + ${rec.id}}">
+		<img class="img-fluid" th:src="@{/images/broccoli.jpg}" th:alt="${rec.name}">
+	      </a>
+	      <p th:text="${rec.name}">Recipe Name</p>
+	    </div>
+	  </div>
 	</div>
-        
 
       <!-- /.row -->
     
     </div>
     <!-- /.container -->
+
+    <!-- Bootstrap and necessary plugins -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
   </body>
 </html>

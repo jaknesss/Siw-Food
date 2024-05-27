@@ -5,6 +5,17 @@
     <title>SiwFood - Homepage</title>
 </head>
 
+	<header>
+        
+        <div th:if="${user == null}">
+            <span th:text="${userDetails.username}"></span>
+            <a href="/login">Login</a>
+        </div>
+        <div th:unless="${user}">
+             <a href="/logout">Logotu</a>
+            </div>
+    </header>
+
 <body>
 	
     <h1>HomePage</h1>

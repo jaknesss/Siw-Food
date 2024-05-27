@@ -47,3 +47,63 @@
   list-style-type: disc;
   padding-left: 20px;
 }
+
+.related-recipes-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.related-recipe {
+  flex: 1 1 calc(25% - 20px);
+  box-sizing: border-box;
+}
+
+.related-recipe img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.related-recipe p {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.inline-recipes .recipe-item {
+        display: inline-block;
+        vertical-align: top;
+        width: 23%;
+        margin: 1%;
+      }
+      .recipe-item img {
+        width: 100%;
+     }
+     
+     
+.inline-recipes {
+  display: flex;
+  flex-wrap: wrap; /* permette di andare a capo se non c'è abbastanza spazio */
+  gap: 16px; /* aggiunge spazio tra gli elementi */
+}
+
+.recipe-item {
+  flex: 1 1 calc(33.333% - 16px); /* gli elementi si dividono lo spazio disponibile */
+  box-sizing: border-box; /* include padding e border nel calcolo delle dimensioni */
+}
+
+.recipe-item img {
+  max-width: 100%; /* l'immagine si adatta al contenitore */
+  height: auto; /* mantiene le proporzioni dell'immagine */
+}     
+     
+     
+     
+     
+     
+     
+     
+     
+     
